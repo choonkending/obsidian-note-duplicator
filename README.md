@@ -1,94 +1,90 @@
-# Obsidian Sample Plugin
+# Obsidian Note Duplicator Plugin
 
-This is a sample plugin for Obsidian (https://obsidian.md).
+Duplicate your notes from current ones seamlessly with preset rules! 
 
-This project uses TypeScript to provide type checking and documentation.
-The repo depends on the latest plugin API (obsidian.d.ts) in TypeScript Definition format, which contains TSDoc comments describing what it does.
+This plugin adds commands and context menu options to duplicate a note, automatically updating the new note's name using smart logic.
 
-This sample plugin demonstrates some of the basic functionality the plugin API can do.
-- Adds a ribbon icon, which shows a Notice when clicked.
-- Adds a command "Open Sample Modal" which opens a Modal.
-- Adds a plugin setting tab to the settings page.
-- Registers a global click event and output 'click' to the console.
-- Registers a global interval which logs 'setInterval' to the console.
+The goal of this plugin is remove friction when creating new notes while adhering to your note-taking identification system. 
 
-## First time developing plugins?
+## Problem
 
-Quick starting guide for new plugin devs:
+If you use a note-taking system such as [Zettelkasten](https://www.atlassian.com/blog/productivity/zettelkasten-method), you will probably have adopted identification system. 
 
-- Check if [someone already developed a plugin for what you want](https://obsidian.md/plugins)! There might be an existing plugin similar enough that you can partner up with.
-- Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
-- Clone your repo to a local development folder. For convenience, you can place this folder in your `.obsidian/plugins/your-plugin-name` folder.
-- Install NodeJS, then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your plugin from `main.ts` to `main.js`.
-- Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
-- Reload Obsidian to load the new version of your plugin.
-- Enable plugin in settings window.
-- For updates to the Obsidian API run `npm update` in the command line under your repo folder.
+Creating new notes within this system means they should adhere to your identification system. 
 
-## Releasing new releases
+I use a simple numbering system to index my notes.
 
-- Update your `manifest.json` with your new version number, such as `1.0.1`, and the minimum Obsidian version required for your latest release.
-- Update your `versions.json` file with `"new-plugin-version": "minimum-obsidian-version"` so older versions of Obsidian can download an older version of your plugin that's compatible.
-- Create new GitHub release using your new version number as the "Tag version". Use the exact version number, don't include a prefix `v`. See here for an example: https://github.com/obsidianmd/obsidian-sample-plugin/releases
-- Upload the files `manifest.json`, `main.js`, `styles.css` as binary attachments. Note: The manifest.json file must be in two places, first the root path of your repository and also in the release.
-- Publish the release.
+**Example**
 
-> You can simplify the version bump process by running `npm version patch`, `npm version minor` or `npm version major` after updating `minAppVersion` manually in `manifest.json`.
-> The command will bump version in `manifest.json` and `package.json`, and add the entry for the new version to `versions.json`
+Below is my current folder structure:
 
-## Adding your plugin to the community plugin list
+```
+/Literature_Notes
+  - 1 - Biology.md
+```
 
-- Check the [plugin guidelines](https://docs.obsidian.md/Plugins/Releasing/Plugin+guidelines).
-- Publish an initial version.
-- Make sure you have a `README.md` file in the root of your repo.
-- Make a pull request at https://github.com/obsidianmd/obsidian-releases to add your plugin.
+If I have a new note _unrelated_ to Biology, e.g. Physics, then I would _increment_ the number 1.
+
+```
+/Literature_Notes
+  - 1 - Biology.md
+  - 2 - Physics.md
+```
+
+If I have a new note under the sphere of Biology, e.g. Anatomy, then I would _nest_, i.e. make it 1.1
+
+```
+/Literature_Notes
+  - 1 - Biology.md
+  - 1.1 - Anatomy.md
+```
+
+As the size of your vault increases, copying/pasting and formatting your new note to adhere to your identification system can _get in the way of your actual note taking_.
+
+This plugin aims to remove those barriers just by making your note taking _slightly_ more pleasing. 
+
+## What does this plugin do?
+
+https://github.com/user-attachments/assets/2cbbb436-9302-4d05-9439-22b09f950da5
+
+- Adds commands and right-click menu options to duplicate your current note.
+- Lets you choose how the new note's name is generated using "title transformers". 
+
+## Existing Transformers
+
+> [!TIP]
+> Please feel free to contribute/raise an issue for your use case.
+
+### 1. Increment Last Number
+- This mode finds the last number in your note's name and increases it by 1.
+- If there is no number, it adds ` 1` to the end.
+
+**Examples:**
+- `1 - Biology.md` → `2 - .md`
+- `100 - Artificial Intelligence` → `101 - .md`
+
+### 2. Nest Last Number
+- This mode adds a new number after the last decimal at the end of the note's index, nesting it each time.
+
+**Examples:**
+- `1 - Biology.md` → `1.1 - .md`
+- `1.1 - Anatomy.md` → `1.1.1 - .md`
 
 ## How to use
+- Right-click a note in the file explorer and choose a duplication mode.
+- Or use the command palette to run a duplication command.
+- The new note will appear in the same folder, with the name updated by the selected transformer.
 
-- Clone this repo.
-- Make sure your NodeJS is at least v16 (`node --version`).
-- `npm i` or `yarn` to install dependencies.
-- `npm run dev` to start compilation in watch mode.
+## Customizing content extraction
+- In the plugin settings, you can set a regular expression to extract part of the note's content for the duplicate.
+- Only the first match will be used in the new note.
 
-## Manually installing the plugin
+## Funding
 
-- Copy over `main.js`, `styles.css`, `manifest.json` to your vault `VaultFolder/.obsidian/plugins/your-plugin-id/`.
+If you find this plugin useful, just let me know! 
 
-## Improve code quality with eslint (optional)
-- [ESLint](https://eslint.org/) is a tool that analyzes your code to quickly find problems. You can run ESLint against your plugin to find common bugs and ways to improve your code. 
-- To use eslint with this project, make sure to install eslint from terminal:
-  - `npm install -g eslint`
-- To use eslint to analyze this project use this command:
-  - `eslint main.ts`
-  - eslint will then create a report with suggestions for code improvement by file and line number.
-- If your source code is in a folder, such as `src`, you can use eslint with this command to analyze all files in that folder:
-  - `eslint ./src/`
+If you have a use case, please look at contributing to help!
 
-## Funding URL
+## Contributing
 
-You can include funding URLs where people who use your plugin can financially support it.
-
-The simple way is to set the `fundingUrl` field to your link in your `manifest.json` file:
-
-```json
-{
-    "fundingUrl": "https://buymeacoffee.com"
-}
-```
-
-If you have multiple URLs, you can also do:
-
-```json
-{
-    "fundingUrl": {
-        "Buy Me a Coffee": "https://buymeacoffee.com",
-        "GitHub Sponsor": "https://github.com/sponsors",
-        "Patreon": "https://www.patreon.com/"
-    }
-}
-```
-
-## API Documentation
-
-See https://github.com/obsidianmd/obsidian-api
+I accept Pull Requests, Git Issues and feedback for this plugin. 
