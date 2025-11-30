@@ -59,7 +59,7 @@ export default class ObsidianNoteDuplicatorPlugin extends Plugin {
             try {
                 const copiedFile = await this.app.vault.copy(file, newPath);
                 if (copiedFile instanceof TFile) {
-                    this.app.workspace.getLeaf().openFile(copiedFile);
+                    await this.app.workspace.getLeaf().openFile(copiedFile);
                     new Notice("Duplicated note created: " + copiedFile.path);
                 } else {
                     new Notice("Duplication failed: Unable to create file.");
