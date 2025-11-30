@@ -57,11 +57,14 @@ export default class ObsidianNoteDuplicatorPlugin extends Plugin {
             const extension = this.getFileExtension(file.path);
             const newPath = this.generateNewDocumentPath(transformedTitle, extension, file.parent?.path);
             try {
-                const copiedFile = await this.app.vault.copy(file, newPath) as TFile;
-                this.app.workspace.getLeaf().openFile(copiedFile);
-                new Notice("Duplicated note created: " + copiedFile.path);
+                const copiedFile = await this.app.vault.copy(file, newPath);
+                if (copiedFile instanceof TFile) {
+                    await this.app.workspace.getLeaf().openFile(copiedFile);
+                    new Notice("Duplicated note created: " + copiedFile.path);
+                } else {
+                    new Notice("Duplication failed: unable to create file.");
+                }
             } catch(error) {
-                console.error("error", error);
                 new Notice(`Duplication failed due to ${error}`);
             }
         } else {
@@ -78,7 +81,8 @@ export default class ObsidianNoteDuplicatorPlugin extends Plugin {
     }
 
     async loadSettings() {
-        this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+        const loaded = (await this.loadData()) as Partial<ObsidianNoteDuplicatorSettings> | null;
+        this.settings = Object.assign({}, DEFAULT_SETTINGS, loaded ?? {});
     }
 
     async saveSettings() {
