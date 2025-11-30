@@ -1,10 +1,19 @@
 # Obsidian Note Duplicator Plugin
 
+[![Release Obsidian plugin](https://github.com/choonkending/obsidian-note-duplicator/actions/workflows/release.yml/badge.svg)](https://github.com/choonkending/obsidian-note-duplicator/actions/workflows/release.yml)
+
 Duplicate your notes from current ones seamlessly with preset rules! 
 
 This plugin adds commands and context menu options to duplicate a note, automatically updating the new note's name using smart logic.
 
 The goal of this plugin is remove friction when creating new notes while adhering to your note-taking identification system. 
+
+## What does this plugin do?
+
+- Adds commands and right-click menu options to duplicate your current note.
+- Lets you choose how the new note's name is generated using "title transformers". 
+
+https://github.com/user-attachments/assets/49f91986-7b20-4a31-848e-2bd6bd77bf3a
 
 ## Problem
 
@@ -42,13 +51,6 @@ If I have a new note under the sphere of Biology, e.g. Anatomy, then I would _ne
 As the size of your vault increases, copying/pasting and formatting your new note to adhere to your identification system can _get in the way of your actual note taking_.
 
 This plugin aims to remove those barriers just by making your note taking _slightly_ more pleasing. 
-
-## What does this plugin do?
-
-https://github.com/user-attachments/assets/2cbbb436-9302-4d05-9439-22b09f950da5
-
-- Adds commands and right-click menu options to duplicate your current note.
-- Lets you choose how the new note's name is generated using "title transformers". 
 
 ## Existing Transformers
 
