@@ -1,6 +1,7 @@
 # Obsidian Note Duplicator Plugin
 
-[![Release Obsidian plugin](https://github.com/choonkending/obsidian-note-duplicator/actions/workflows/release.yml/badge.svg)](https://github.com/choonkending/obsidian-note-duplicator/actions/workflows/release.yml)
+[![Release Obsidian plugin](https://github.com/choonkending/obsidian-note-duplicator/actions/workflows/release.yml/badge.svg)](https://github.com/choonkending/obsidian-note-duplicator/actions/workflows/release.yml) ![GitHub Release](https://img.shields.io/github/v/release/choonkending/obsidian-note-duplicator)
+
 
 Duplicate your notes from current ones seamlessly with preset rules! 
 
@@ -89,4 +90,4 @@ If you have a use case, please look at contributing to help!
 
 ## Contributing
 
-I accept Pull Requests, Git Issues and feedback for this plugin. 
+I accept Pull Requests, Git Issues and feedback for this plugin.
