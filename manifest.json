@@ -1,6 +1,6 @@
 {
 	"id": "squire",
-	"name": " Squire",
+	"name": "Squire",
 	"version": "0.1.0",
 	"minAppVersion": "0.1.0",
 	"description": "Your faithful note-taking companion. Automatically provides capability like incremental file naming so you can stay in the flow.",
