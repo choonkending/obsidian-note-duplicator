@@ -1,7 +1,7 @@
 {
-	"name": "obsidian-note-duplicator",
+	"name": "obsidian-squire",
 	"version": "0.0.1",
-	"description": "Duplicate your notes from current ones seamlessly",
+	"description": "Your faithful note-taking companion. Automatically provides capability like incremental file naming so you can stay in the flow.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
