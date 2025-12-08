@@ -1,7 +1,8 @@
-# Obsidian Note Duplicator Plugin
+# Obsidian Squire Plugin
 
-[![Release Obsidian plugin](https://github.com/choonkending/obsidian-note-duplicator/actions/workflows/release.yml/badge.svg)](https://github.com/choonkending/obsidian-note-duplicator/actions/workflows/release.yml) ![GitHub Release](https://img.shields.io/github/v/release/choonkending/obsidian-note-duplicator)
+[![Release Obsidian plugin](https://github.com/choonkending/obsidian-squire/actions/workflows/release.yml/badge.svg)](https://github.com/choonkending/obsidian-squire/actions/workflows/release.yml) ![GitHub Release](https://img.shields.io/github/v/release/choonkending/obsidian-squire)
 
+Your faithful note-taking companion. Automatically provides capability like incremental file naming so you can stay in the flow.
 
 Duplicate your notes from current ones seamlessly with preset rules! 
 

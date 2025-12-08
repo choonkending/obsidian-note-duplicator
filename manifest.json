@@ -1,9 +1,9 @@
 {
-	"id": "note-duplicator",
-	"name": "Note Duplicator",
+	"id": "squire",
+	"name": " Squire",
 	"version": "0.1.0",
 	"minAppVersion": "0.1.0",
-	"description": "Duplicate your notes from current ones seamlessly.",
+	"description": "Your faithful note-taking companion. Automatically provides capability like incremental file naming so you can stay in the flow.",
 	"author": "choonkending",
 	"authorUrl": "https://github.com/choonkending",
 	"fundingUrl": "https://github.com/sponsors/choonkending/",
